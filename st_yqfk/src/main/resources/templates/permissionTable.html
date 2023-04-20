@@ -1,0 +1,703 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>疫情防控管理</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/vendor/cryptocurrency-icons.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/plugins.css">
+
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="assets/css/helper.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Custom Style CSS Only For Demo Purpose -->
+    <link id="cus-style" rel="stylesheet" href="assets/css/style-primary.css">
+
+    <link rel="stylesheet" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+</head>
+
+<body class="skin-dark">
+
+<div class="main-wrapper">
+
+
+
+
+    <!-- 悬浮导航栏-->
+    <div class="header-section">
+        <div class="container-fluid">
+            <div class="row justify-content-between align-items-center">
+                <!-- logo -->
+                <div class="header-logo col-auto">
+                    <img src="css/img/jzxxxy.png"  alt="">
+                </div>
+                <div class="header-right flex-grow-1 col-auto">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-auto">
+                            <div class="row align-items-center">
+                                <!--展开左导航栏-->
+                                <div class="col-auto"><button class="side-header-toggle"><i
+                                        class="zmdi zmdi-menu"></i></button></div>
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+
+                            <ul class="header-notification-area">
+
+
+
+
+
+                                <!--User-->
+                                <li class="adomx-dropdown col-auto">
+                                    <a class="toggle" href="#">
+                                            <span class="user">
+                                        <span class="avatar">
+                                            <img src="css/img/gliy.jpeg" alt="">
+                                            <span class="status"></span>
+                                            </span>
+                                            <span class="name">管理员</span>
+                                            </span>
+                                    </a>
+
+                                    <!-- Dropdown -->
+                                    <div class="adomx-dropdown-menu dropdown-menu-user">
+
+                                        <div class="body">
+                                            <ul>
+                                                <li><a href="/logout"><i class="zmdi zmdi-lock-open"></i>退出登录</a></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <!--  <a href="/logout">
+                              <button style="position:relative;right: 10%" class="button button-polymer"><i class="fa fa-sign-out"></i><span>退出登录</span></button>
+                          </a>-->
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 左导航 -->
+    <div class="side-header show">
+        <button class="side-header-close"><i class="zmdi zmdi-close"></i></button>
+        <!-- Side Header Inner Start -->
+        <div class="side-header-inner custom-scroll">
+
+            <nav class="side-header-menu" id="side-header-menu">
+                <ul>
+                    <li class="has-sub-menu"><a href=" "><i class="ti-home"></i> <span>主页</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="main"><span>全球疫情分布图</span></a></li>
+                            <li><a href="mainTwo"><span>全国疫情统计图</span></a></li>
+                            <li><a href="cityEchartsTable"><span>山西省疫情统计图</span></a></li>
+                            <li><a href="jzxxEchartsTable"><span>晋中信息学院疫情统计图</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="ti-palette"></i> <span>学院</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="pupilTable"><span>学生信息管理</span></a></li>
+                            <li><a href="collegeTable"><span>学院信息管理</span></a></li>
+                            <li><a href="systemTable"> <span>院系信息管理</span></a></li>
+                            <li><a href="teamTable"><span>班级信息管理</span></a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="has-sub-menu"><a href="#"><i class="ti-package"></i><span>日志</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="logTable"><span>日志管理</span></a></li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="ti-agenda"></i> <span>部门</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="departmentTable"><span>部门信息管理</span></a></li>
+                            <li><a href="teacherTable"><span>老师信息管理</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ti-truck"></i> <span>医院</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="hospitalTable"><span>医院信息管理</span></a></li>
+                            <li><a href="doctorTable"><span>医生信息管理</span></a></li>
+                            <li><a href="tubeTable"><span>核酸采样管管理</span></a></li>
+                            <li><a href="tubeCodeTable"><span>采样管二维码</span></a></li>
+                            <li><a href="nucleicacidCheckTable"><span>核酸人员采样历史记录</span></a></li>
+
+                        </ul>
+                    </li>
+                    <li class="has-sub-menu"><a href="#"><i class="ti-lock"></i> <span>权限</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="permissionTable"><span>管理员权限</span></a></li>
+                            <li><a href="roleTable"><span>角色管理</span></a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </nav>
+
+        </div><!-- Side Header Inner End -->
+    </div><!-- Side Header End -->
+
+
+    <!-- Content Body Start -->
+    <div class="content-body">
+
+        <!-- Page Headings Start -->
+        <div class="row justify-content-between align-items-center mb-10">
+
+            <!-- Page Heading Start -->
+            <div class="col-12 col-lg-auto mb-20">
+                <div class="page-heading">
+                    <h3 class="title">权限 <span>/ 管理员权限</span></h3>
+                </div>
+            </div><!-- Page Heading End -->
+
+        </div><!-- Page Headings End -->
+
+        <div class="row">
+
+
+
+
+            <!--表格-->
+            <div class="col-12 mb-30">
+                <div class="box">
+                    <div class="box-head">
+                        <h4 class="title">Administrator permissions</h4>
+                    </div>
+                    <div class="box-body">
+                        <div class="table-responsive">
+
+                            <div class="box-body">
+                                <div class="row mbn-30">
+
+                                    <!--Select-->
+                                    <div class="col-lg-4 col-12 mb-30">
+                                        <select class="form-control nice-select" name="selectRole" id="selectRole">
+                                            <option disabled id="xe">请选择</option>
+                                        </select>
+
+
+
+                                    </div>
+                                    <!--搜索-->
+                                    <div class="col-lg-4 col-12 mb-30">
+
+                                        <input type="button" value="搜索" id="search" class="button button-primary">
+
+                                    </div>
+
+                                    <!--添加权限-->
+                                    <div class="col-lg-4 col-12 mb-30">
+
+                                        <button class="button button-primary tj" data-toggle="modal" data-target="#add" data-whatever="@getbootstrap">添加</button>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>权限编号</th>
+                                    <th>权限名称</th>
+                                    <th>权限路径</th>
+                                    <th>编辑操作</th>
+                                </tr>
+                                </thead>
+                                <tbody id="body">
+                                <tr>
+                                    <th>1</th>
+                                    <td>Cell</td>
+                                    <td>Cell</td>
+                                    <td>
+                                        <button class="button button-primary" data-toggle="modal" data-target="#updete" data-whatever="@getbootstrap">修改</button>
+                                        <input type="button" value="删除" class="button button-primary">
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                               <div >
+                                   <!-- 修改模态框-->
+                                   <div class="modal fade" id="updete">
+                                       <div class="modal-dialog modal-dialog-centered">
+                                           <div class="modal-content">
+                                               <div class="modal-header">
+                                                   <h5 class="modal-title">修改</h5>
+                                                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                               </div>
+                                               <div class="modal-body">
+                                                   <form>
+                                                       <div class="form-group">
+                                                           <label  class="col-form-label">权限名称:</label>
+                                                           <input type="text" class="form-control" id="permissionNameUp" name="permissionNameUp">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label  class="col-form-label">权限路径</label>
+                                                           <input type="text" class="form-control" id="permissionDescUp" name="permissionDescUp">
+                                                       </div>
+                                                   </form>
+                                               </div>
+                                               <div class="modal-footer">
+                                                   <button class="button button-danger" data-dismiss="modal">关闭</button>
+                                                   <button class="button button-primary" id="updetePermission">提交</button>
+
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+
+                                   <!--添加-->
+                                   <div class="modal fade" id="add">
+                                       <div class="modal-dialog modal-dialog-centered">
+                                           <div class="modal-content">
+                                               <div class="modal-header">
+                                                   <h5 class="modal-title">添加</h5>
+                                                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                               </div>
+                                               <div class="modal-body">
+                                                   <form>
+                                                       <div class="form-group">
+                                                           <label  class="col-form-label">权限名称:</label>
+                                                           <input type="text" class="form-control"  id="permissionNameAdd" name="permissionNameAdd">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label  class="col-form-label">权限路径</label>
+                                                           <input type="text" class="form-control" id="permissionDescAdd" name="permissionNameAdd">
+                                                       </div>
+                                                   </form>
+                                               </div>
+                                               <div class="modal-footer">
+                                                   <button class="button button-danger" data-dismiss="modal">关闭</button>
+                                                   <button class="button button-primary" id="addPermission">提交</button>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Responsive Table End-->
+
+
+        </div>
+
+    </div><!-- Content Body End -->
+
+    <!-- Footer Section Start -->
+    <div class="footer-section">
+        <div class="container-fluid">
+
+            <div class="footer-copyright text-center">
+                <p class="text-body-light">2022/11/25 &copy;双体杯:王湘澎/康龙/任豪强 <a href="http://beian.miit.gov.cn/" class="txt2">
+                    晋ICP备2021011861号
+                </a></p>
+            </div>
+
+        </div>
+    </div><!-- Footer Section End -->
+
+</div>
+
+<!-- JS
+============================================ -->
+
+<!-- Global Vendor, plugins & Activation JS -->
+<script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="assets/js/vendor/popper.min.js"></script>
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<!--Plugins JS-->
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/tippy4.min.js.js"></script>
+<!--Main JS-->
+<script src="assets/js/main.js"></script>
+
+
+<script>
+    $(function () {
+                /*发送请求,获取所有权限信息*/
+        $.get("/selectPermission",function (data) {
+                    =data.message
+            $("#body").empty();
+            for(var i=0;i<data.length;i++){
+                $("#body").append("<tr>\n" +
+                    "                                    <th>"+data[i].pid+"</th>\n" +
+                    "                                    <td>"+data[i].permissionName+"</td>\n" +
+                    "                                    <td>"+data[i].permissionDesc+"</td>\n" +
+                    "                                    <td>\n" +
+                    "                                        <button id='"+data[i].pid+"' class='button button-primary xg' data-toggle='modal' data-target='#updete' data-whatever='@getbootstrap'>修改</button>\n" +
+                    "                                        <input id='"+data[i].pid+"' type='button' value='删除' class='button button-primary sc'>\n" +
+                    "                                    </td>\n" +
+                    "\n" +
+                    "                                </tr>")
+            }
+
+            /*当修改被单击获取当前点击的rid*/
+            $(".xg").click(function () {
+                pid=$(this).attr("id")
+
+                $("#updetePermission").click(function () {
+                    var name=$("#permissionNameUp").val()
+                    var desc=$("#permissionDescUp").val()
+                    $.get("/updetePermission",{"Pid":pid,"permissionName":name,"permissionDesc":desc},function (data) {
+                        $('#updete').modal('hide')
+                        if(data===1){
+                            swal({
+                                title:"非常好",
+                                text:"修改成功",
+                                type:"success",
+                                icon:"success",
+                                button:"确定"
+                            })
+                                .then((qd)=>{
+                                    if(qd){
+                                        window.location="/permissionTable";
+                                    }
+                                })
+                        }else{
+                            swal({
+                                title: "注意",
+                                text: "修改失败",
+                                type: "warning",
+                                icon:"warning",
+                                button: "确定",
+                            })
+                                .then((qd)=>{
+                                    if(qd){
+                                        window.location="/permissionTable";
+                                    }
+                                })
+                        }
+                    })
+                })
+
+                })
+
+            /*当删除被单击获取当前点击的rid*/
+            $(".sc").click(function () {
+                pid=$(this).attr("id")
+
+                swal({
+                    title: "确定要删除吗?",
+                    text: "删除不可恢复!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            $.get("/deletePermission",{"Pid":pid},function (data) {
+                                 if(data===1){
+                                     swal({
+                                         title:"删除",
+                                         text:"已删除",
+                                         type:"success",
+                                         icon:"success",
+                                         button:"确定"
+                                     })
+                                     .then((qd)=>{
+                                         if(qd){
+                                             window.location="/permissionTable";
+                                         }
+                                     })
+
+
+                                 }else{
+                                     swal({
+                                         title:"删除",
+                                         text:"删除失败",
+                                         type:"warning",
+                                         icon:"warning",
+                                         button:"确定"
+                                     })
+                                         .then((qd)=>{
+                                             if(qd){
+                                                 window.location="/permissionTable";
+                                             }
+                                         })
+                                 }
+
+                            })
+
+                        } else {
+                            swal("好的,已取消");
+                        }
+                    });
+
+            })
+
+            /*当添加被单击获取当前点击的rid*/
+            $(".tj").click(function () {
+                pid=$(this).attr("id")
+
+                $("#addPermission").click(function () {
+                    /*获取身份*/
+                    var a=$("#selectRole").val()
+                    /*获取信息和路径*/
+                    var nameAdd=$("#permissionNameAdd").val()
+                    var descAdd=$("#permissionDescAdd").val()
+
+                    $.get("/addPermission",{"permissionName":nameAdd,"permissionDesc":descAdd,"Rid":a},function (data) {
+                        $('#add').modal('hide')
+                        if(data===1){
+                            swal({
+                                title:"添加",
+                                text:"添加成功",
+                                type:"success",
+                                icon:"success",
+                                button:"确定"
+                            })
+                                .then((qd)=>{
+                                    if(qd){
+                                        window.location="/permissionTable";
+                                    }
+                                })
+                        }else{
+                            swal({
+                                title:"添加",
+                                text:"添加失败",
+                                type:"warning",
+                                icon:"warning",
+                                button:"确定"
+                            })
+                                .then((qd)=>{
+                                    if(qd){
+                                        window.location="/permissionTable";
+                                    }
+                                })
+                        }
+                    })
+                })
+
+            })
+
+            })
+    })
+
+
+    $(function () {
+
+
+
+
+
+
+
+
+
+        /*发送请求,select获取角色 */
+       $.get("/selectRole",function (data) {
+
+          for(var i=0;i<data.length;i++){
+              $("#xe").after("<option value="+data[i].rid+">"+data[i].roleName+"</option>")
+           }
+       })
+
+
+
+        /*当点击搜索,查找选中的select对应角色id 的权限*/
+      $("#search").click(function () {
+          let pid
+
+          $("#body").empty();
+               var a=$("#selectRole").val()
+               $.get("/selectRidPermission",{"Rid":a},function (data) {
+                   for(var i=0;i<data.length;i++){
+                       $("#body").append("<tr>\n" +
+                           "                                    <th>"+data[i].pid+"</th>\n" +
+                           "                                    <td>"+data[i].permissionName+"</td>\n" +
+                           "                                    <td>"+data[i].permissionDesc+"</td>\n" +
+                           "                                    <td>\n" +
+                           "                                        <button id='"+data[i].pid+"' class='button button-primary xg' data-toggle='modal' data-target='#updete' data-whatever='@getbootstrap'>修改</button>\n" +
+                           "                                        <input id='"+data[i].pid+"' type='button' value='删除' class='button button-primary sc'>\n" +
+                           "                                    </td>\n" +
+                           "\n" +
+                           "                                </tr>")
+                   }
+
+
+                   /*当修改被单击获取当前点击的rid*/
+                   $(".xg").click(function () {
+                       pid =$(this).attr("id")
+
+                       $("#updetePermission").click(function () {
+                              var name=$("#permissionNameUp").val()
+                              var desc=$("#permissionDescUp").val()
+                           $.get("/updetePermission",{"Pid":pid,"permissionName":name,"permissionDesc":desc},function (data) {
+                               $('#updete').modal('hide')
+                                if(data===1){
+                                    swal({
+                                        title:"非常好",
+                                        text:"修改成功",
+                                        type:"success",
+                                        icon:"success",
+                                        button:"确定"
+                                    })
+                                        .then((qd)=>{
+                                            if(qd){
+                                                window.location="/permissionTable";
+                                            }
+                                        })
+                                }else{
+                                    swal({
+                                        title: "注意",
+                                        text: "修改失败",
+                                        type: "warning",
+                                        icon:"warning",
+                                        button: "确定",
+                                    })
+                                        .then((qd)=>{
+                                            if(qd){
+                                                window.location="/permissionTable";
+                                            }
+                                        })
+                                }
+                           })
+                       })
+
+                   })
+
+                   /*当删除被单击获取当前点击的rid*/
+                   $(".sc").click(function () {
+                       pid=$(this).attr("id")
+
+                       swal({
+                           title: "确定要删除吗?",
+                           text: "删除不可恢复!",
+                           icon: "warning",
+                           buttons: true,
+                           dangerMode: true,
+                       })
+                           .then((willDelete) => {
+                               if(willDelete) {
+                                   $.get("/deletePermission",{"Pid":pid},function (data) {
+                                       if(data===1){
+                                           swal({
+                                               title:"删除",
+                                               text:"删除成功",
+                                               type:"success",
+                                               icon:"success",
+                                               button:"确定"
+                                           })
+                                               .then((qd)=>{
+                                                   if(qd){
+                                                       window.location="/permissionTable";
+                                                   }
+                                               })
+
+                                       }else{
+                                           swal({
+                                               title:"删除",
+                                               text:"删除失败",
+                                               type:"warning",
+                                               icon:"warning",
+                                               button:"确定"
+                                           })
+                                               .then((qd)=>{
+                                                   if(qd){
+                                                       window.location="/permissionTable";
+                                                   }
+                                               })
+                                       }
+
+                                   })
+
+                               } else {
+                                   swal("好的,已取消");
+                               }
+                           });
+
+                   })
+
+
+               })
+      })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    })
+
+
+
+
+
+</script>
+</body>
+
+</html>

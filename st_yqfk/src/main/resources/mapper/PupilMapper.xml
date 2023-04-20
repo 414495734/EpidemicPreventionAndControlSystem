@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.PupilMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.Pupil" >
+        <id column="PID" property="pid" jdbcType="INTEGER" />
+        <result column="PNAME" property="pname" jdbcType="VARCHAR" />
+        <result column="PSEX" property="psex" jdbcType="VARCHAR" />
+        <result column="PCARD" property="pcard" jdbcType="VARCHAR" />
+        <result column="PLOCATION" property="plocation" jdbcType="VARCHAR" />
+        <result column="ACTIVE" property="active" jdbcType="VARCHAR" />
+        <result column="TOUCH" property="touch" jdbcType="VARCHAR" />
+        <result column="DIAGNOSIS" property="diagnosis" jdbcType="VARCHAR" />
+        <result column="INFECTION_SOURCE" property="infectionSource" jdbcType="VARCHAR" />
+        <result column="HID" property="hid" jdbcType="INTEGER" />
+        <result column="PPHONE" property="pphone" jdbcType="VARCHAR" />
+        <result column="PSTART_TIME" property="pstart_time" jdbcType="TIMESTAMP" />
+        <result column="TID" property="tid" jdbcType="INTEGER" />
+    </resultMap>
+
+
+    <select id="dataCollegePupilCount" resultType="java.lang.Integer">
+        SELECT  count(*) from yqfk_college  JOIN  yqfk_system
+                                                  on yqfk_college.CID=yqfk_system.CID
+                                            JOIN yqfk_team
+                                                 on yqfk_system.SID=yqfk_team.SID
+                                            JOIN yqfk_team_pupil
+                                                 on yqfk_team.TID=yqfk_team_pupil.TID
+                                            JOIN yqfk_pupil
+                                                 on yqfk_team_pupil.PID=yqfk_pupil.PID
+                                          where  yqfk_pupil.ACTIVE='1'
+    </select>
+    <select id="selectPupil" resultMap="BaseResultMap">
+        SELECT * from yqfk_pupil where TID  like concat('%',#{TID},'%')  and ACTIVE='1' order by PID DESC
+    </select>
+    <select id="selectPupilAll" resultMap="BaseResultMap">
+        SELECT * from yqfk_pupil where ACTIVE='1' order by PID DESC
+    </select>
+
+    <insert id="addPupil">
+        insert into  yqfk_pupil  values(default,#{pname},#{psex},#{pcard},#{plocation},#{active},#{touch},#{diagnosis},#{infectionSource},#{hid},#{pphone},#{pstart_time},#{tid})
+    </insert>
+    <insert id="addIntPupil"  >
+        insert into yqfk_pupil
+        values
+        <foreach collection="list" item="item" separator="," >
+            (default,#{item.pname},#{item.psex},#{item.pcard},#{item.plocation},#{item.active},#{item.touch},#{item.diagnosis},#{item.infectionSource},#{item.hid},#{item.pphone},#{item.pstart_time},#{item.tid})
+        </foreach>
+    </insert>
+
+
+    <update id="updatePupil">
+        UPDATE yqfk_pupil set  PNAME=#{pname},PSEX=#{psex}, PCARD=#{pcard},PLOCATION=#{plocation},ACTIVE=#{active},TOUCH=#{touch},DIAGNOSIS=#{diagnosis},INFECTION_SOURCE=#{infectionSource},HID=#{hid},PPHONE=#{pphone},PSTART_TIME=#{pstart_time},TID=#{tid}  WHERE PID=#{pid}
+    </update>
+    <update id="deletePupil">
+        UPDATE yqfk_pupil set ACTIVE='0' where PID=#{PID}
+    </update>
+
+    <select id="selectPupilByCard" resultType="com.example.demo.pojo.Pupil" parameterType="java.lang.String">
+        SELECT * from yqfk_pupil where ACTIVE='1' and PCARD = #{pCard}
+    </select>
+    <select id="selectSearchValueAndBid" resultType="com.example.demo.pojo.Pupil">
+
+    </select>
+
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(*) number from yqfk_pupil where ACTIVE='1'
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Pupil" >
+        update yqfk_pupil
+        <set >
+            <if test="pname != null" >
+                PNAME = #{pname,jdbcType=VARCHAR},
+            </if>
+            <if test="psex != null" >
+                PSEX = #{psex,jdbcType=VARCHAR},
+            </if>
+            <if test="pcard != null" >
+                PCARD = #{pcard,jdbcType=VARCHAR},
+            </if>
+            <if test="plocation != null" >
+                PLOCATION = #{plocation,jdbcType=VARCHAR},
+            </if>
+            <if test="active != null" >
+                ACTIVE = #{active,jdbcType=VARCHAR},
+            </if>
+            <if test="touch != null" >
+                TOUCH = #{touch,jdbcType=VARCHAR},
+            </if>
+            <if test="diagnosis != null" >
+                DIAGNOSIS = #{diagnosis,jdbcType=VARCHAR},
+            </if>
+            <if test="infectionSource != null" >
+                INFECTION_SOURCE = #{infectionSource,jdbcType=VARCHAR},
+            </if>
+            <if test="hid != null" >
+                HID = #{hid,jdbcType=INTEGER},
+            </if>
+            <if test="pphone != null" >
+                PPHONE = #{pphone,jdbcType=VARCHAR},
+            </if>
+            <if test="pstart_time != null" >
+                PSTART_TIME = #{pstart_time,jdbcType=TIMESTAMP},
+            </if>
+            <if test="tid != null" >
+                TID = #{tid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where PID = #{pid,jdbcType=INTEGER}
+    </update>
+</mapper>

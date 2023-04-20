@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SystemMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.System">
+        <id column="SID" jdbcType="VARCHAR" property="sid" />
+        <result column="SNAME" jdbcType="VARCHAR" property="sname" />
+        <result column="STEXT" jdbcType="VARCHAR" property="stext" />
+        <result column="CID" jdbcType="VARCHAR" property="cid" />
+        <result column="CREATE_DATE" jdbcType="VARCHAR" property="create_date" />
+        <result column="LAST_DATE" jdbcType="VARCHAR" property="last_date" />
+        <result column="ACTIVE" jdbcType="VARCHAR" property="active" />
+        <association property="college" javaType="com.example.demo.pojo.College">
+            <id column="CID" property="cid" jdbcType="INTEGER" />
+            <result column="CNAME" property="cname" jdbcType="VARCHAR" />
+            <result column="CTEXT" property="ctext" jdbcType="VARCHAR" />
+            <result column="ACTIVE" property="active" jdbcType="VARCHAR" />
+            <result column="CREATE_DATA" property="create_data" jdbcType="VARCHAR" />
+            <result column="LAST_DATA" property="last_data" jdbcType="VARCHAR" />
+        </association>
+    </resultMap>
+
+
+    <select id="selectSystem" resultType="com.example.demo.pojo.System">
+        select * from yqfk_system where CID=#{CID}
+    </select>
+
+    <select id="selectSystemList" resultType="com.example.demo.pojo.System">
+        select * from yqfk_system where ACTIVE='1'
+    </select>
+
+
+
+    <select id="selectSystemPage" parameterType="com.example.demo.pojo.System" resultMap="BaseResultMap">
+        select * from  yqfk_system s left join yqfk_college c on s.CID = c.CID where s.ACTIVE = '1' AND s.SNAME like #{sname}
+        <if test="cid!=null and cid!='' ">
+            AND s.CID = #{cid}
+        </if>
+    </select>
+
+    <insert id="addSystem" >
+        insert into  yqfk_system  values(default,#{sname},#{stext},#{cid},#{create_date},#{last_date},#{active})
+    </insert>
+
+    <update id="updateSystem">
+        UPDATE yqfk_system set  SNAME=#{sname},STEXT=#{stext},CID=#{cid}, LAST_DATE=#{last_date}  WHERE SID=#{sid}
+    </update>
+
+    <update id="deleteSystem">
+        UPDATE yqfk_system set  ACTIVE=#{active},LAST_DATE=#{last_date}  WHERE SID=#{sid}
+    </update>
+</mapper>

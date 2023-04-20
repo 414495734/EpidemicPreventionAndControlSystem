@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TeamMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.Team">
+        <id column="TID" jdbcType="VARCHAR" property="tid" />
+        <result column="TNAME" jdbcType="VARCHAR" property="tname" />
+        <result column="TTEXT" jdbcType="VARCHAR" property="ttext" />
+        <result column="SID" jdbcType="VARCHAR" property="sid" />
+        <result column="ACTIVE" jdbcType="VARCHAR" property="active" />
+        <result column="CREATE_DATE" jdbcType="VARCHAR" property="create_date" />
+        <result column="LAST_DATE" jdbcType="VARCHAR" property="last_date" />
+        <association property="system" javaType="com.example.demo.pojo.System">
+            <id column="SID" jdbcType="VARCHAR" property="sid" />
+            <result column="SNAME" jdbcType="VARCHAR" property="sname" />
+            <result column="STEXT" jdbcType="VARCHAR" property="stext" />
+            <result column="CID" jdbcType="VARCHAR" property="cid" />
+            <result column="CREATE_DATE" jdbcType="VARCHAR" property="create_date" />
+            <result column="LAST_DATE" jdbcType="VARCHAR" property="last_date" />
+            <result column="ACTIVE" jdbcType="VARCHAR" property="active" />
+        </association>
+    </resultMap>
+
+
+    <select id="selectTeam" resultType="com.example.demo.pojo.Team">
+        select * from yqfk_team where SID=#{SID}
+    </select>
+    <select id="selectTeamAll" resultType="com.example.demo.pojo.Team">
+        select * from yqfk_team
+    </select>
+
+    <select id="selectTeamPage" parameterType="com.example.demo.pojo.Team" resultMap="BaseResultMap">
+        select * from  yqfk_team t left join yqfk_system s on s.SID = t.SID where t.ACTIVE = '1' AND t.TNAME like #{tname}
+        <if test="sid!=null and sid!='' ">
+            AND t.SID = #{sid}
+        </if>
+    </select>
+
+    <insert id="addTeam" >
+        insert into  yqfk_team  values(default,#{tname},#{ttext},#{sid},#{active},#{create_date},#{last_date})
+    </insert>
+
+    <update id="updateTeam">
+        UPDATE yqfk_team set  TNAME=#{tname},TTEXT=#{ttext},SID=#{sid}, LAST_DATE=#{last_date}  WHERE TID=#{tid}
+    </update>
+
+    <update id="deleteTeam">
+        UPDATE yqfk_team set  ACTIVE=#{active},LAST_DATE=#{last_date}  WHERE TID=#{tid}
+    </update>
+
+</mapper>

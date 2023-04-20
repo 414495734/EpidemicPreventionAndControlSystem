@@ -1,0 +1,8 @@
+{
+  "name": "st_yqfk",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "echarts": "^5.4.0"
+  }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.DepartmentMapper">
+
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.Department">
+        <id column="DID" property="dId" jdbcType="INTEGER" />
+        <result column="DNAME" property="dName" jdbcType="VARCHAR" />
+        <result column="DTEXT" property="dText" jdbcType="VARCHAR" />
+        <result column="ACTIVE" property="active" jdbcType="VARCHAR" />
+        <result column="CREATE_DATE" property="create_date" />
+        <result column="LAST_DATE" property="last_date" />
+        <result column="File1" property="file1" jdbcType="VARCHAR" />
+        <result column="File2" property="file2" jdbcType="VARCHAR" />
+        <result column="File3" property="file3" jdbcType="VARCHAR" />
+        <result column="File4" property="file4" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectDepartment" resultMap="BaseResultMap">
+        select * from  yqfk_department where ACTIVE = '1'
+    </select>
+
+    <select id="selectDepartmentPage" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT * from yqfk_department where ACTIVE = '1' AND DNAME like #{dNameLike}
+    </select>
+
+    <insert id="addDepartment" >
+        insert into  yqfk_department  values(default,#{dName},#{dText},#{active},#{create_date},#{last_date},#{file1},#{file2},#{file3},#{file4})
+    </insert>
+
+    <update id="updateDepartment">
+        UPDATE yqfk_department set  DNAME=#{dName},DTEXT=#{dText}, LAST_DATE=#{last_date} , File1=#{file1}, File2=#{file2}, File3=#{file3}, File4=#{file4} WHERE DID=#{dId}
+    </update>
+
+    <update id="deleteDepartment">
+        UPDATE yqfk_department set  ACTIVE=#{active},LAST_DATE=#{last_date}  WHERE DID=#{dId}
+    </update>
+
+</mapper>

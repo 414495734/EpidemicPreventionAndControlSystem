@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.LogMapper">
+
+
+
+    <select id="selectLogAll" resultType="com.example.demo.pojo.Log">
+        select * from yqfk_log  where   LOGDATE  like concat('%',#{value},'%') or  LOGLEVEL  like concat('%',#{value},'%')  or  LOCATION  like concat('%',#{value},'%')
+            or MESSAGE  like concat('%',#{value},'%') or  LID  like concat('%',#{value},'%')
+    </select>
+
+
+    <delete id="deleteLog">
+      delete from yqfk_log where LID=#{LID}
+    </delete>
+</mapper>

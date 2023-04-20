@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--device指设备，initial-scale指打开的缩放比例，user-scalable指用户是否可以缩放-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>地图</title>
+    <!--引入bootstrap-->
+    <link href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--引入echarts,如果引入echarts.js旁边会出现一个类似热力柱的东西，下面会给出图片-->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@4.5.0/dist/echarts.min.js"></script>
+    <!--引入china.js-->
+    <script src="css/china.js"></script>
+    <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<div class="row">
+     <img src="">
+</div>
+<script>
+   $.get("/WXImgQxkyTwo",function (data) {
+          $(".row").append( "<img src='"+data+"'>")
+   })
+
+</script>
+</body>
+</html>

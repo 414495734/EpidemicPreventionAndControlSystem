@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.HospitalMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Hospital" >
+    <id column="HID" property="hid" jdbcType="INTEGER" />
+    <result column="HNAME" property="hname" jdbcType="VARCHAR" />
+    <result column="HTEXT" property="htext" jdbcType="VARCHAR" />
+    <result column="HLOCATION" property="hlocation" jdbcType="VARCHAR" />
+    <result column="HDETAILED_LOCATION" property="hdetailedLocation" jdbcType="VARCHAR" />
+    <result column="HPHONE" property="hphone" jdbcType="VARCHAR" />
+    <result column="ACTIVE" property="active" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" />
+    <result column="LAST_DATE" property="lastDate" />
+    <result column="FILE1" property="file1" jdbcType="VARCHAR" />
+    <result column="FILE2" property="file2" jdbcType="VARCHAR" />
+    <result column="FILE3" property="file3" jdbcType="VARCHAR" />
+    <result column="FILE4" property="file4" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    HID, HNAME, HTEXT, HLOCATION, HDETAILED_LOCATION, HPHONE, ACTIVE, CREATE_DATE, LAST_DATE,
+    FILE1, FILE2, FILE3, FILE4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.demo.pojo.HospitalExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yqfk_hospital
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from yqfk_hospital
+    where HID = #{hid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yqfk_hospital
+    where HID = #{hid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.pojo.HospitalExample" >
+    delete from yqfk_hospital
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Hospital" >
+    insert into yqfk_hospital (HID, HNAME, HTEXT,
+                               HLOCATION, HDETAILED_LOCATION, HPHONE,
+                               ACTIVE, CREATE_DATE, LAST_DATE,
+                               FILE1, FILE2, FILE3,
+                               FILE4)
+    values (#{hid,jdbcType=INTEGER}, #{hname,jdbcType=VARCHAR}, #{htext,jdbcType=VARCHAR},
+            #{hlocation,jdbcType=VARCHAR}, #{hdetailedLocation,jdbcType=VARCHAR}, #{hphone,jdbcType=VARCHAR},
+            #{active,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{lastDate,jdbcType=TIMESTAMP},
+            #{file1,jdbcType=VARCHAR}, #{file2,jdbcType=VARCHAR}, #{file3,jdbcType=VARCHAR},
+            #{file4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Hospital" >
+    insert into yqfk_hospital
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="hid != null" >
+        HID,
+      </if>
+      <if test="hname != null" >
+        HNAME,
+      </if>
+      <if test="htext != null" >
+        HTEXT,
+      </if>
+      <if test="hlocation != null" >
+        HLOCATION,
+      </if>
+      <if test="hdetailedLocation != null" >
+        HDETAILED_LOCATION,
+      </if>
+      <if test="hphone != null" >
+        HPHONE,
+      </if>
+      <if test="active != null" >
+        ACTIVE,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="lastDate != null" >
+        LAST_DATE,
+      </if>
+      <if test="file1 != null" >
+        FILE1,
+      </if>
+      <if test="file2 != null" >
+        FILE2,
+      </if>
+      <if test="file3 != null" >
+        FILE3,
+      </if>
+      <if test="file4 != null" >
+        FILE4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="hid != null" >
+        #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="hname != null" >
+        #{hname,jdbcType=VARCHAR},
+      </if>
+      <if test="htext != null" >
+        #{htext,jdbcType=VARCHAR},
+      </if>
+      <if test="hlocation != null" >
+        #{hlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="hdetailedLocation != null" >
+        #{hdetailedLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="hphone != null" >
+        #{hphone,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastDate != null" >
+        #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="file1 != null" >
+        #{file1,jdbcType=VARCHAR},
+      </if>
+      <if test="file2 != null" >
+        #{file2,jdbcType=VARCHAR},
+      </if>
+      <if test="file3 != null" >
+        #{file3,jdbcType=VARCHAR},
+      </if>
+      <if test="file4 != null" >
+        #{file4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.pojo.HospitalExample" resultType="java.lang.Integer" >
+    select count(*) from yqfk_hospital
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update yqfk_hospital
+    <set >
+      <if test="record.hid != null" >
+        HID = #{record.hid,jdbcType=INTEGER},
+      </if>
+      <if test="record.hname != null" >
+        HNAME = #{record.hname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.htext != null" >
+        HTEXT = #{record.htext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hlocation != null" >
+        HLOCATION = #{record.hlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hdetailedLocation != null" >
+        HDETAILED_LOCATION = #{record.hdetailedLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hphone != null" >
+        HPHONE = #{record.hphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.active != null" >
+        ACTIVE = #{record.active,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastDate != null" >
+        LAST_DATE = #{record.lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.file1 != null" >
+        FILE1 = #{record.file1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file2 != null" >
+        FILE2 = #{record.file2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file3 != null" >
+        FILE3 = #{record.file3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file4 != null" >
+        FILE4 = #{record.file4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update yqfk_hospital
+    set HID = #{record.hid,jdbcType=INTEGER},
+    HNAME = #{record.hname,jdbcType=VARCHAR},
+    HTEXT = #{record.htext,jdbcType=VARCHAR},
+    HLOCATION = #{record.hlocation,jdbcType=VARCHAR},
+    HDETAILED_LOCATION = #{record.hdetailedLocation,jdbcType=VARCHAR},
+    HPHONE = #{record.hphone,jdbcType=VARCHAR},
+    ACTIVE = #{record.active,jdbcType=VARCHAR},
+    CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+    LAST_DATE = #{record.lastDate,jdbcType=TIMESTAMP},
+    FILE1 = #{record.file1,jdbcType=VARCHAR},
+    FILE2 = #{record.file2,jdbcType=VARCHAR},
+    FILE3 = #{record.file3,jdbcType=VARCHAR},
+    FILE4 = #{record.file4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Hospital" >
+    update yqfk_hospital
+    <set >
+      <if test="hname != null" >
+        HNAME = #{hname,jdbcType=VARCHAR},
+      </if>
+      <if test="htext != null" >
+        HTEXT = #{htext,jdbcType=VARCHAR},
+      </if>
+      <if test="hlocation != null" >
+        HLOCATION = #{hlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="hdetailedLocation != null" >
+        HDETAILED_LOCATION = #{hdetailedLocation,jdbcType=VARCHAR},
+      </if>
+      <if test="hphone != null" >
+        HPHONE = #{hphone,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null" >
+        ACTIVE = #{active,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastDate != null" >
+        LAST_DATE = #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="file1 != null" >
+        FILE1 = #{file1,jdbcType=VARCHAR},
+      </if>
+      <if test="file2 != null" >
+        FILE2 = #{file2,jdbcType=VARCHAR},
+      </if>
+      <if test="file3 != null" >
+        FILE3 = #{file3,jdbcType=VARCHAR},
+      </if>
+      <if test="file4 != null" >
+        FILE4 = #{file4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where HID = #{hid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Hospital" >
+    update yqfk_hospital
+    set HNAME = #{hname,jdbcType=VARCHAR},
+        HTEXT = #{htext,jdbcType=VARCHAR},
+        HLOCATION = #{hlocation,jdbcType=VARCHAR},
+        HDETAILED_LOCATION = #{hdetailedLocation,jdbcType=VARCHAR},
+        HPHONE = #{hphone,jdbcType=VARCHAR},
+        ACTIVE = #{active,jdbcType=VARCHAR},
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+        LAST_DATE = #{lastDate,jdbcType=TIMESTAMP},
+        FILE1 = #{file1,jdbcType=VARCHAR},
+        FILE2 = #{file2,jdbcType=VARCHAR},
+        FILE3 = #{file3,jdbcType=VARCHAR},
+        FILE4 = #{file4,jdbcType=VARCHAR}
+    where HID = #{hid,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectHospital" resultType="com.example.demo.pojo.Hospital">
+    select * from  yqfk_hospital where ACTIVE = '1'
+  </select>
+
+  <select id="selectHospitalPage" parameterType="java.lang.String" resultMap="BaseResultMap">
+    SELECT * from yqfk_hospital where ACTIVE = '1' AND HNAME like #{hnameLike}
+  </select>
+</mapper>

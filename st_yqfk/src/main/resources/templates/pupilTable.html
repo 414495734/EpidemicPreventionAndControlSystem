@@ -1,0 +1,1103 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>疫情防控管理</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- CSS
+	============================================ -->
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" href="assets/css/vendor/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/vendor/themify-icons.css">
+    <link rel="stylesheet" href="assets/css/vendor/cryptocurrency-icons.css">
+
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="assets/css/plugins/plugins.css">
+
+    <!-- Helper CSS -->
+    <link rel="stylesheet" href="assets/css/helper.css">
+
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Custom Style CSS Only For Demo Purpose -->
+    <link id="cus-style" rel="stylesheet" href="assets/css/style-primary.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <style>
+       .span1{
+           width: 30%;
+       }
+    /*   .searchSty{
+            height: 40px;
+           border-radius: 32px;
+            border: 1px solid #fafafa;
+           width: 180px;
+           }*/
+   </style>
+</head>
+
+<body class="skin-dark">
+
+<div class="main-wrapper">
+
+
+
+
+
+
+    <!-- 悬浮导航栏-->
+    <div class="header-section">
+        <div class="container-fluid">
+            <div class="row justify-content-between align-items-center">
+                <!-- logo -->
+                <div class="header-logo col-auto">
+                    <img src="css/img/jzxxxy.png"  alt="">
+                </div>
+                <div class="header-right flex-grow-1 col-auto">
+                    <div class="row justify-content-between align-items-center">
+                        <div class="col-auto">
+                            <div class="row align-items-center">
+                                <!--展开左导航栏-->
+                                <div class="col-auto"><button class="side-header-toggle"><i
+                                        class="zmdi zmdi-menu"></i></button></div>
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+
+                            <ul class="header-notification-area">
+
+
+
+
+
+                                <!--User-->
+                                <li class="adomx-dropdown col-auto">
+                                    <a class="toggle" href="#">
+                                            <span class="user">
+                                        <span class="avatar">
+                                            <img src="css/img/gliy.jpeg" alt="">
+                                            <span class="status"></span>
+                                            </span>
+                                            <span class="name">管理员</span>
+                                            </span>
+                                    </a>
+
+                                    <!-- Dropdown -->
+                                    <div class="adomx-dropdown-menu dropdown-menu-user">
+
+                                        <div class="body">
+                                            <ul>
+                                                <li><a href="/logout"><i class="zmdi zmdi-lock-open"></i>退出登录</a></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+
+                        <!--  <a href="/logout">
+                              <button style="position:relative;right: 10%" class="button button-polymer"><i class="fa fa-sign-out"></i><span>退出登录</span></button>
+                          </a>-->
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 左导航 -->
+    <div class="side-header show">
+        <button class="side-header-close"><i class="zmdi zmdi-close"></i></button>
+        <!-- Side Header Inner Start -->
+        <div class="side-header-inner custom-scroll">
+
+            <nav class="side-header-menu" id="side-header-menu">
+                <ul>
+                    <li class="has-sub-menu"><a href=" "><i class="ti-home"></i> <span>主页</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="main"><span>全球疫情分布图</span></a></li>
+                            <li><a href="mainTwo"><span>全国疫情统计图</span></a></li>
+                            <li><a href="cityEchartsTable"><span>山西省疫情统计图</span></a></li>
+                            <li><a href="jzxxEchartsTable"><span>晋中信息学院疫情统计图</span></a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="ti-palette"></i> <span>学院</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="pupilTable"><span>学生信息管理</span></a></li>
+                            <li><a href="collegeTable"><span>学院信息管理</span></a></li>
+                            <li><a href="systemTable"> <span>院系信息管理</span></a></li>
+                            <li><a href="teamTable"><span>班级信息管理</span></a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="has-sub-menu"><a href="#"><i class="ti-package"></i><span>日志</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="logTable"><span>日志管理</span></a></li>
+
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="ti-agenda"></i> <span>部门</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="departmentTable"><span>部门信息管理</span></a></li>
+                            <li><a href="teacherTable"><span>老师信息管理</span></a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="ti-truck"></i> <span>医院</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="hospitalTable"><span>医院信息管理</span></a></li>
+                            <li><a href="doctorTable"><span>医生信息管理</span></a></li>
+                            <li><a href="tubeTable"><span>核酸采样管管理</span></a></li>
+                            <li><a href="tubeCodeTable"><span>采样管二维码</span></a></li>
+                            <li><a href="nucleicacidCheckTable"><span>核酸人员采样历史记录</span></a></li>
+
+                        </ul>
+                    </li>
+                    <li class="has-sub-menu"><a href="#"><i class="ti-lock"></i> <span>权限</span></a>
+                        <ul class="side-header-sub-menu">
+                            <li><a href="permissionTable"><span>管理员权限</span></a></li>
+                            <li><a href="roleTable"><span>角色管理</span></a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </nav>
+
+        </div><!-- Side Header Inner End -->
+    </div><!-- Side Header End -->
+
+
+    <!-- 内容 -->
+    <div class="content-body">
+
+        <!-- Page Headings Start -->
+        <div class="row justify-content-between align-items-center mb-10">
+
+            <!-- Page Heading Start -->
+            <div class="col-12 col-lg-auto mb-20">
+                <div class="page-heading">
+                    <h3 class="title">学院 <span>/ 学生信息管理</span></h3>
+                </div>
+            </div><!-- Page Heading End -->
+
+        </div><!-- Page Headings End -->
+
+        <div class="row">
+
+
+
+
+            <!--表格-->
+            <div class="col-12 mb-30">
+                <div class="box">
+
+                    <div class="box-head">
+                        <h4 class="title">Student information management</h4>
+                    </div>
+
+
+
+
+
+                    <div class="box-body">
+                        <div class="table-responsive">
+
+                            <div class="box-body">
+
+                                <div class="row mbn-30">
+
+
+
+
+
+
+
+                                    <div class="col-lg-4 col-12 mb-30">
+                                        <!--搜索-->
+                                       <!-- <input type="text" class="form-control"  id="dtsearch" style="width:220px;border-radius: 25px;display: inline-block;margin-right: 20px;">-->
+                                        <input type="button" value="搜索" id="search" class="button button-primary">
+                                         <!--添加-->
+                                        <button class="button button-primary tj" data-toggle="modal" data-target="#add" data-whatever="@getbootstrap">添加</button>
+
+                                    </div>
+
+                                    <div class="col-lg-4 col-12 mb-30">
+
+                                        <!--导入-->
+                                        <button class="button button-primary dr" data-toggle="modal" data-target="#cInt" data-whatever="@getbootstrap">导入Excel</button>
+
+
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                                <div class="row mbn-30" style="margin-top: 20px;">
+
+                                    <select class="form-control nice-select span1" name="selectCollege" id="selectCollege">
+                                        <option disabled selected hidden id="sCollege">院</option>
+                                    </select>
+
+                                    <select class="form-control nice-select span1" name="selectSystem" id="selectSystem">
+                                        <option disabled selected hidden id="sSystem">系</option>
+                                    </select>
+
+                                    <select class="form-control nice-select span1" name="selectTeam" id="selectTeam">
+                                        <option disabled selected hidden id="sTeam">班</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>学生编号</th>
+                                    <th>学生名称</th>
+                                    <th>学生性别</th>
+                                    <th>身份证</th>
+                                    <th>宿舍地址</th>
+                                    <th>是否密接</th>
+                                    <th>是否确诊</th>
+                                    <th>感染源</th>
+                                    <th>电话</th>
+                                    <th>开始隔离时间</th>
+                                </tr>
+                                </thead>
+                                <tbody id="body">
+                                <tr>
+                                    <th>学生编号</th>
+                                    <th>学生名称</th>
+                                    <th>学生性别</th>
+                                    <th>宿舍地址</th>
+                                    <th>是否密接</th>
+                                    <th>是否确诊</th>
+                                    <th>感染源</th>
+                                    <th>电话</th>
+                                    <th>开始隔离时间</th>
+                                    <td>
+                                        <button class="button button-primary" data-toggle="modal" data-target="#updete" data-whatever="@getbootstrap">修改</button>
+                                        <input type="button" value="删除" class="button button-primary">
+                                    </td>
+
+                                </tr>
+
+                                </tbody>
+
+                            </table>
+
+
+
+                            <div >
+                                <!-- 修改模态框-->
+                                <div class="modal fade" id="updete">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">修改</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">姓名:</label>
+                                                        <input type="text" class="form-control"  id="pnamex" name="pname">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">性别:</label>
+                                                        <input type="text" class="form-control" id="psexx" name="psex">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">身份证:</label>
+                                                        <input type="text" class="form-control" id="pcardx" name="pcard">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">宿舍地址:</label>
+                                                        <input type="text" class="form-control" id="plocationx" name="plocation">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">是否密接:</label>
+                                                        <select class="form-control nice-select " name="touch" id="touchx">
+                                                            <option disabled selected hidden id="pTouchx">请选择</option>
+                                                            <option  value="0">未密接</option>
+                                                            <option  value="1">密接</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">是否确诊:</label>
+                                                        <select class="form-control nice-select " name="diagnosis" id="diagnosisx">
+                                                            <option disabled selected hidden id="pDiagnosisx">请选择</option>
+                                                            <option  value="0">未密接</option>
+                                                            <option  value="1">密接</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">感染源:</label>
+                                                        <select class="form-control nice-select " name="infectionSource" id="infectionSourcex">
+                                                            <option disabled selected hidden id="pInfectionSourcex">请选择</option>
+                                                            <option  value="0">无</option>
+                                                            <option  value="1">校内感染</option>
+                                                            <option  value="2">外出感染</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">班级:</label>
+                                                        <select class="form-control nice-select " name="Team" id="Teamx">
+                                                            <option disabled selected hidden id="PTeamx">请选择</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">电话:</label>
+                                                        <input type="text" class="form-control" id="pphonex" name="pphone">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="button button-danger" data-dismiss="modal">关闭</button>
+                                                <button class="button button-primary" id="updetePermission">提交</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--添加-->
+                                <div class="modal fade" id="add">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">添加</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">姓名:</label>
+                                                        <input type="text" class="form-control"  id="pname" name="pname">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">性别:</label>
+                                                        <input type="text" class="form-control" id="psex" name="psex">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">身份证:</label>
+                                                        <input type="text" class="form-control" id="pcard" name="pcard">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">宿舍地址:</label>
+                                                        <input type="text" class="form-control" id="plocation" name="plocation">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">是否密接:</label>
+                                                        <select class="form-control nice-select " name="touch" id="touch">
+                                                            <option disabled selected hidden id="pTouch">请选择</option>
+                                                            <option  value="0">未密接</option>
+                                                            <option  value="1">密接</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">是否确诊:</label>
+                                                        <select class="form-control nice-select " name="diagnosis" id="diagnosis">
+                                                            <option disabled selected hidden id="pDiagnosis">请选择</option>
+                                                            <option  value="0">未密接</option>
+                                                            <option  value="1">密接</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">感染源:</label>
+                                                        <select class="form-control nice-select " name="infectionSource" id="infectionSource">
+                                                            <option disabled selected hidden id="pInfectionSource">请选择</option>
+                                                            <option  value="0">无</option>
+                                                            <option  value="1">校内感染</option>
+                                                            <option  value="2">外出感染</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">班级:</label>
+                                                        <select class="form-control nice-select " name="Team" id="Team">
+                                                            <option disabled selected hidden id="PTeam">请选择</option>
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">电话:</label>
+                                                        <input type="text" class="form-control" id="pphone" name="pphone">
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="button button-danger" data-dismiss="modal">关闭</button>
+                                                <button class="button button-primary" id="addPermission">提交</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--导入-->
+                                <div class="modal fade" id="cInt">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">导入</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">导入格式:</label>
+                                                         <img src="assets/images/geshiguihua.png">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">学院:</label>
+                                                        <select class="form-control nice-select " name="selectCollegeInt" id="selectCollegeInt">
+                                                            <option disabled selected hidden id="sCollegeInt">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">院系:</label>
+                                                        <select class="form-control nice-select " name="selectSystemInt" id="selectSystemInt">
+                                                            <option disabled selected hidden id="sSystemInt">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">班级:</label>
+                                                        <select class="form-control nice-select " name="selectTeamInt" id="selectTeamInt">
+                                                            <option disabled selected hidden id="sTeamInt">请选择</option>
+                                                        </select>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="button button-danger" data-dismiss="modal">关闭</button>
+                                                <label id="realBtn" class="lqwvje-btn">
+                                                    <input type="file" id="testFile" hidden="hidden">
+                                                    上传文件
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                               <!-- 导出
+                                <div class="modal fade" id="cInt">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">导出</h5>
+                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">导入格式:</label>
+                                                        <img src="assets/images/geshiguihua.png">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">学院:</label>
+                                                        <select class="form-control nice-select " name="selectCollegeInt" id="selectCollegeInt">
+                                                            <option disabled selected hidden id="sCollegeInt">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">院系:</label>
+                                                        <select class="form-control nice-select " name="selectSystemInt" id="selectSystemInt">
+                                                            <option disabled selected hidden id="sSystemInt">请选择</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label  class="col-form-label">班级:</label>
+                                                        <select class="form-control nice-select " name="selectTeamInt" id="selectTeamInt">
+                                                            <option disabled selected hidden id="sTeamInt">请选择</option>
+                                                        </select>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="button button-danger" data-dismiss="modal">关闭</button>
+                                                <label id="realBtn" class="lqwvje-btn">
+                                                    <input type="file" id="testFile" hidden="hidden">
+                                                    上传文件
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <ul class="pagination" >
+                <li class="page-item"><a id="sy"  class="page-link" href="#">首页</a></li>
+                <li class="page-item"><a id="syy"  class="page-link" href="#">上一页</a></li>
+            </ul>
+            <!--分页-->
+            <ul class="pagination" id="ye">
+
+            </ul>
+            <ul class="pagination" >
+                <li class="page-item"><a id="xyy"  class="page-link" href="#">下一页</a></li>
+                <li class="page-item"><a id="wy"  class="page-link" href="#">尾页</a></li>
+            </ul>
+
+
+
+
+
+        </div>
+
+    </div><!-- Content Body End -->
+
+    <!-- Footer Section Start -->
+    <div class="footer-section">
+        <div class="container-fluid">
+
+            <div class="footer-copyright text-center">
+                <p class="text-body-light">2022/11/25 &copy;双体杯:王湘澎/康龙/任豪强 <a href="http://beian.miit.gov.cn/" class="txt2">
+                    晋ICP备2021011861号
+                </a></p>
+            </div>
+
+        </div>
+    </div><!-- Footer Section End -->
+
+</div>
+
+<!-- JS
+============================================ -->
+
+<!-- Global Vendor, plugins & Activation JS -->
+<script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
+<script src="assets/js/vendor/popper.min.js"></script>
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<!--Plugins JS-->
+<script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="assets/js/plugins/tippy4.min.js.js"></script>
+<!--Main JS-->
+<script src="assets/js/main.js"></script>
+
+<!-- Plugins & Activation JS For Only This Page -->
+<script src="assets/js/plugins/jsgrid/jsgrid.min.js"></script>
+<script src="assets/js/plugins/jsgrid/jsgrid-db.js"></script>
+<script src="assets/js/plugins/jsgrid/jsgrid.active.js"></script>
+<script type="text/javascript" src='assets/js/xlsx.core.min.js'></script>
+</body>
+<script>
+    var html = ""
+    let jsons = []
+    $(function () {
+      $(".dr").click(function () {
+          let yid;
+          let xid;
+          let bid=0;
+          /*查院*/
+
+          $.get("/selectCollege",function (data) {
+              for(var i=0;i<data.length;i++){
+                  $("#selectCollegeInt").append("<option value="+data[i].cid+">"+data[i].cname+"</option>")
+              }
+
+          })
+
+          /*当院框 选中时 更新系框*/
+          $("#selectCollegeInt").change(function () {
+              yid=$("#selectCollegeInt").val()
+              /*获取系信息*/
+              $.get("/selectSystem",{"yid":yid},function (data) {
+                  for(var i=0;i<data.length;i++){
+                      $("#selectSystemInt").append("<option value="+data[i].sid+">"+data[i].sname+"</option>")
+                  }
+              })
+          })
+
+
+          /*当系框 选中时 更新班框*/
+          $("#selectSystemInt").change(function () {
+              xid=$("#selectSystemInt").val()
+              /*获取班信息*/
+              $.get("/selectTeam",{"xid":xid},function (data) {
+                  for(var i=0;i<data.length;i++){
+                      $("#selectTeamInt").append("<option value="+data[i].tid+">"+data[i].tname+"</option>")
+                  }
+              })
+
+
+          })
+
+       /*开始导入*/
+          document.querySelector("#testFile").addEventListener("change", function () {
+              //获取到选中的文件
+              var file = document.querySelector("#testFile").files[0];
+              if (file.size > 1024 * 1024) {
+                  alert('当前文件大小:' + Math.floor(file.size / 1024) + 'KB,上传文件不能大于1024KB');
+                  return false;
+              }
+
+              var type = file.name.split('.');
+              if (type[type.length - 1] !== 'xlsx' && type[type.length - 1] !== 'xls') {
+                  alert('只能选择excel文件导入');
+                  return false;
+              }
+              const reader = new FileReader();
+              reader.readAsBinaryString(file);
+              reader.onload = function (e) {
+                  const data = e.target.result;
+                  const zzexcel = window.XLS.read(data, {
+                      type: 'binary'
+                  });
+                  const result = [];
+                  for (let i = 0; i < zzexcel.SheetNames.length; i++) {
+                      const newData = window.XLS.utils.sheet_to_json(zzexcel.Sheets[zzexcel.SheetNames[i]]);
+                      result.push(...newData)
+                  }
+
+                  var a=JSON.stringify(result)
+                  if(a.indexOf("姓名*")!=-1&&a.indexOf("性别*")!=-1&&a.indexOf("宿舍地址*")!=-1&&a.indexOf("是否密接*")!=-1&&a.indexOf("是否确诊*")!=-1&&a.indexOf("感染源*")!=-1&&a.indexOf("电话*")!=-1&&a.indexOf("身份证*")!=-1){
+                      a=a.replaceAll("姓名*","pname")
+                      a=a.replaceAll("性别*","psex")
+                      a=a.replaceAll("宿舍地址*","plocation")
+                      a=a.replaceAll("是否密接*","touch")
+                      a=a.replaceAll("是否确诊*","diagnosis")
+                      a=a.replaceAll("感染源*","infectionSource")
+                      a=a.replaceAll("电话*","pphone")
+                      a=a.replaceAll("身份证*","pcard")
+                      bid=$("#selectTeamInt").val()
+                      $.get("/addIntPupil",{"list":a,"bid":bid},function (data) {
+                          if(data!==0){
+                              swal({
+                                  title:"添加",
+                                  text:"添加成功",
+                                  type:"success",
+                                  icon:"success",
+                                  button:"确定"
+                              })
+                                  .then((qd)=>{
+                                      if(qd){
+                                          window.location="/pupilTable";
+                                      }
+                                  })
+                          }else{
+                              swal({
+                                  title:"添加",
+                                  text:"添加失败",
+                                  type:"warning",
+                                  icon:"warning",
+                                  button:"确定"
+                              })
+                                  .then((qd)=>{
+                                      if(qd){
+                                          window.location="/pupilTable";
+                                      }
+                                  })
+                          }
+                      })
+                  }
+
+
+
+
+              }
+          });
+
+
+
+      })
+    })
+
+
+
+
+
+
+
+    $(function () {
+        /*select框 院 系 班 三级联查*/
+        let yid;
+        let xid;
+        let bid=0;
+       $.get("/selectCollege",function (data) {
+           for(var i=0;i<data.length;i++){
+               $("#sCollege").after("<option value="+data[i].cid+">"+data[i].cname+"</option>")
+           }
+
+
+       })
+
+        /*当院框 选中时 更新系框*/
+        $("#selectCollege").change(function () {
+            yid=$("#selectCollege").val()
+            /*获取系信息*/
+            $.get("/selectSystem",{"yid":yid},function (data) {
+                for(var i=0;i<data.length;i++){
+                    $("#sSystem").after("<option value="+data[i].sid+">"+data[i].sname+"</option>")
+                }
+            })
+        })
+
+        /*当系框 选中时 更新班框*/
+        $("#selectSystem").change(function () {
+            xid=$("#selectSystem").val()
+            /*获取班信息*/
+            $.get("/selectTeam",{"xid":xid},function (data) {
+                for(var i=0;i<data.length;i++){
+                    $("#sTeam").after("<option value="+data[i].tid+">"+data[i].tname+"</option>")
+                }
+            })
+        })
+
+        let pageNum=1;
+        let pageSize=5;
+        let total;
+        let pid
+
+     /*分页查询*/
+        function f(pageNum,pageSize,bid) {
+            $.get("/selectPupil",{"bid":bid,"pageNum":pageNum,"pageSize":pageSize},function (data) {
+                total=data.pages
+                let  a=data.list;
+                $("#body").empty()
+                for(var i=0;i<a.length;i++){
+                    if(a[i].pstart_time===null){
+                        a[i].pstart_time='无';
+                    }
+                    if(a[i].infectionSource===null){
+                        a[i].infectionSource='无';
+                    }
+                    if(bid!=0){
+                        $("#body").append(" <tr>\n" +
+                            "                                    <th>"+a[i].pid+"</th>\n" +
+                            "                                    <th>"+a[i].pname+"</th>\n" +
+                            "                                    <th>"+a[i].psex+"</th>\n" +
+                            "                                    <th>"+a[i].pcard+"</th>\n" +
+                            "                                    <th>"+a[i].plocation+"</th>\n" +
+                            "                                    <th>"+a[i].touch+"</th>\n" +
+                            "                                    <th>"+a[i].diagnosis+"</th>\n" +
+                            "                                    <th>"+a[i].infectionSource+"</th>\n" +
+                            "                                    <th>"+a[i].pphone+"</th>\n" +
+                            "                                    <th>"+a[i].pstart_time+"</th>\n" +
+                            "                                    <td>\n" +
+                            "                                        <button class='button button-primary xg' data-toggle='modal' id='"+a[i].pid+"'  data-target='#updete' data-whatever='@getbootstrap'>修改</button>\n" +
+                            "                                        <input type='button'  id='"+a[i].pid+"'  value='删除' class='button button-primary sc'>\n" +
+                            "                                    </td>\n" +
+                            "\n" +
+                            "                                </tr>")
+
+                    }else{
+                        $("#body").append(" <tr>\n" +
+                            "                                    <th>"+a[i].pid+"</th>\n" +
+                            "                                    <th>"+a[i].pname+"</th>\n" +
+                            "                                    <th>"+a[i].psex+"</th>\n" +
+                            "                                    <th>"+a[i].pcard+"</th>\n" +
+                            "                                    <th>"+a[i].plocation+"</th>\n" +
+                            "                                    <th>"+a[i].touch+"</th>\n" +
+                            "                                    <th>"+a[i].diagnosis+"</th>\n" +
+                            "                                    <th>"+a[i].infectionSource+"</th>\n" +
+                            "                                    <th>"+a[i].pphone+"</th>\n" +
+                            "                                    <th>"+a[i].pstart_time+"</th>\n" +
+                            "\n" +
+                            "                                </tr>")
+                    }
+
+                }
+
+               $(".xg").click(function () {
+                   $.get("/selectTeamAll",function (data) {
+                       for(var i=0;i<data.length;i++){
+                           $("#PTeamx").after("<option  value='"+data[i].tid+"'>"+data[i].tname+"</option>")
+                       }
+                   })
+
+
+                   let  pname=$(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().html()
+                   let  psex=$(this).parent().prev().prev().prev().prev().prev().prev().prev().prev().html()
+                   let  pcard=$(this).parent().prev().prev().prev().prev().prev().prev().prev().html()
+                   let  plocation=$(this).parent().prev().prev().prev().prev().prev().prev().html()
+                   let  pphonex=$(this).parent().prev().prev().html()
+                   $("#pnamex").val(pname);
+                   $("#psexx").val(psex);
+                   $("#pcardx").val(pcard);
+                   $("#pphonex").val(pphonex);
+                   $("#plocationx").val(plocation);
+                   pid=$(this).attr("id")
+                   $("#updetePermission").click(function () {
+                       var  n= $("#pnamex").val()
+                       var s=$("#psexx").val()
+                       var l=$("#plocationx").val()
+                       var t= $("#touchx").val()
+                       var i= $("#diagnosisx").val()
+                       var is= $("#infectionSourcex").val()
+                       var team= $("#Teamx").val()
+                       var p= $("#pphonex").val()
+                       var pc= $("#pcardx").val()
+                       $.get("/updatePupil",{"pid":pid,"pname":n,"psex":s,"pcard":pc,"plocation":l,"touch":t,"diagnosis":i,"infectionSource":is,"tid":team,"pphone":p},function (data) {
+                           if(data===1){
+                               swal({
+                                   title:"修改",
+                                   text:"修改成功",
+                                   type:"success",
+                                   icon:"success",
+                                   button:"确定"
+                               })
+                                   .then((qd)=>{
+                                       if(qd){
+                                           window.location="/pupilTable";
+                                       }
+                                   })
+                           }else{
+                               swal({
+                                   title:"修改",
+                                   text:"修改失败",
+                                   type:"warning",
+                                   icon:"warning",
+                                   button:"确定"
+                               })
+                                   .then((qd)=>{
+                                       if(qd){
+                                           window.location="/pupilTable";
+                                       }
+                                   })
+                           }
+                       })
+                   })
+               })
+
+               $(".sc").click(function () {
+                   pid=$(this).attr("id")
+                   $.get("/deletePupil",{"pid":pid},function (data) {
+                       if(data===1){
+                           swal({
+                               title:"非常好",
+                               text:"删除成功",
+                               type:"success",
+                               icon:"success",
+                               button:"确定"
+                           })
+                               .then((qd)=>{
+                                   if(qd){
+                                       window.location="/pupilTable";
+                                   }
+                               })
+                       }else{
+                           swal({
+                               title: "注意",
+                               text: "删除失败",
+                               type: "warning",
+                               icon:"warning",
+                               button: "确定",
+                           })
+                               .then((qd)=>{
+                                   if(qd){
+                                       window.location="/pupilTable";
+                                   }
+                               })
+                       }
+                   })
+               })
+               /*page*/
+                $("#ye").empty()
+                for(var i=0;i<data.navigatepageNums.length;i++){
+                    $("#ye").append("<li class='page-item' ><a class='page-link ye' id='"+data.navigatepageNums[i]+"'  href='javascript:'>"+data.navigatepageNums[i]+"</a></li>")
+
+                }
+
+
+
+
+
+
+            })
+        }
+
+
+        f(pageNum,pageSize,bid)
+       /*当前点击搜索时*/
+        $("#search").click(function () {
+            bid=$("#selectTeam").val()
+            pageNum=1;
+            if(bid!=null){
+                f(pageNum,pageSize,bid)
+            }else{
+                bid=0
+                f(pageNum,pageSize,bid)
+            }
+
+
+        })
+
+        /*获取当前页对象*/
+        $(document).on("click",'.ye',function () {
+            var s =$(this).attr("id")
+            pageNum=s;
+            f(pageNum,pageSize,bid)
+
+        })
+        /*首页*/
+        $("#sy").click(function () {
+            pageNum=1;
+            f(pageNum,pageSize,bid)
+        })
+        /*下一页*/
+        $("#xyy").click(function () {
+            if(pageNum<total){
+                pageNum++;
+            }
+            f(pageNum,pageSize,bid)
+        })
+        /*下一页*/
+        $("#syy").click(function () {
+            if(pageNum>1){
+                pageNum--;
+            }
+            f(pageNum,pageSize,bid)
+        })
+        /*尾页*/
+        $("#wy").click(function () {
+            pageNum=total;
+            f(pageNum,pageSize,bid)
+        })
+
+
+
+
+
+
+
+    })
+
+
+    /*添加*/
+    $(function () {
+        $(".tj").click(function () {
+
+            $.get("/selectTeamAll",function (data) {
+                for(var i=0;i<data.length;i++){
+                    $("#PTeam").after("<option  value='"+data[i].tid+"'>"+data[i].tname+"</option>")
+                }
+            })
+
+            $("#addPermission").click(function () {
+                var  n= $("#pname").val()
+                 var s=$("#psex").val()
+                 var l=$("#plocation").val()
+                var t= $("#touch").val()
+                var i= $("#diagnosis").val()
+                var is= $("#infectionSource").val()
+                var team= $("#Team").val()
+                var p= $("#pphone").val()
+                var pc= $("#pcard").val()
+                  $.get("/addPupil",{"pname":n,"psex":s,"pcard":pc,"plocation":l,"touch":t,"diagnosis":i,"infectionSource":is,"tid":team,"pphone":p},function (data) {
+                         if(data===1){
+                             swal({
+                                 title:"添加",
+                                 text:"添加成功",
+                                 type:"success",
+                                 icon:"success",
+                                 button:"确定"
+                             })
+                                 .then((qd)=>{
+                                     if(qd){
+                                         window.location="/pupilTable";
+                                     }
+                                 })
+                         }else{
+                             swal({
+                                 title:"添加",
+                                 text:"添加失败",
+                                 type:"warning",
+                                 icon:"warning",
+                                 button:"确定"
+                             })
+                                 .then((qd)=>{
+                                     if(qd){
+                                         window.location="/pupilTable";
+                                     }
+                                 })
+                         }
+                  })
+            })
+
+        })
+
+
+
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<style>
+    .lqwvje-btn {
+        display: inline-block;
+        height: 38px;
+        line-height: 38px;
+        padding: 0 18px;
+        background-color: #428bfa;
+        color: #fff;
+        white-space: nowrap;
+        text-align: center;
+        font-size: 14px;
+        border: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    .btn{
+        width: 92px;
+        height: 38px;
+        border: 0;
+        background-color: #428BFA;
+        color: #fff;
+    }
+</style>
+</html>

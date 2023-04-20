@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TeacherMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.Teacher">
+        <id column="TID" jdbcType="INTEGER" property="tId" />
+        <result column="TSN" jdbcType="INTEGER" property="tSn" />
+        <result column="TNAME" jdbcType="VARCHAR" property="tName" />
+        <result column="TTEXT" jdbcType="VARCHAR" property="tText" />
+        <result column="TSEX" jdbcType="VARCHAR" property="tSex" />
+        <result column="TCARD" jdbcType="VARCHAR" property="tCard" />
+        <result column="TPHONE" jdbcType="VARCHAR" property="tPhone" />
+        <result column="TLOCATION" jdbcType="VARCHAR" property="tLocation" />
+        <result column="TADDRESS" jdbcType="VARCHAR" property="tAddress" />
+        <result column="TOUCH" jdbcType="VARCHAR" property="touch" />
+        <result column="DIAGNOSIS" jdbcType="VARCHAR" property="diagnosis" />
+        <result column="INFECTION_SOURCE" jdbcType="VARCHAR" property="infectionSource" />
+        <result column="HID" jdbcType="INTEGER" property="hId" />
+        <result column="HDID" jdbcType="INTEGER" property="hdId" />
+        <result column="TSTART_TIME" property="tStartTime" />
+        <result column="TEND_TIME" property="tEndTime" />
+        <result column="ACTIVE" jdbcType="VARCHAR" property="active"  />
+        <result column="CREATE_DATE" property="create_date" />
+        <result column="LAST_DATE" property="last_date" />
+        <result column="File1" jdbcType="VARCHAR" property="file1" />
+        <result column="File2" jdbcType="VARCHAR" property="file2" />
+        <result column="File3" jdbcType="VARCHAR" property="file3" />
+        <result column="File4" jdbcType="VARCHAR" property="file4" />
+        <association property="department" javaType="com.example.demo.pojo.Department">
+            <id column="DID" property="dId" jdbcType="INTEGER" />
+            <result column="DNAME" property="dName" jdbcType="VARCHAR" />
+            <result column="DTEXT" property="dText" jdbcType="VARCHAR" />
+            <result column="ACTIVE" property="active" jdbcType="VARCHAR" />
+            <result column="CREATE_DATE" property="create_date" />
+            <result column="LAST_DATE" property="last_date" />
+            <result column="File1" property="file1" jdbcType="VARCHAR" />
+            <result column="File2" property="file2" jdbcType="VARCHAR" />
+            <result column="File3" property="file3" jdbcType="VARCHAR" />
+            <result column="File4" property="file4" jdbcType="VARCHAR" />
+        </association>
+    </resultMap>
+
+
+
+
+    <select id="selectTeacherPage" parameterType="com.example.demo.pojo.Team" resultMap="BaseResultMap">
+        select * from  yqfk_teacher t left join yqfk_department d on d.DID = t.HDID where t.ACTIVE = '1'
+                    AND t.TNAME like #{tName}
+        <if test="tSn!=null and tSn!='' ">
+            AND t.TSN = #{tSn}
+        </if>
+        <if test="tCard!=null and tCard!='' ">
+            AND t.TCARD = #{tCard}
+        </if>
+        <if test="hdId!=null and hdId!='' ">
+            AND t.HDID = #{hdId}
+        </if>
+    </select>
+    <select id="selectTeacher" resultType="com.example.demo.pojo.Teacher">
+            select * from yqfk_teacher t where t.ACTIVE = '1'
+    </select>
+
+
+    <insert id="addTeacher" >
+        insert into  yqfk_teacher  values(default,#{tSn},#{tName},#{tText},#{tSex},#{tCard},#{tPhone},#{tLocation},#{tAddress},#{touch},
+                                          #{diagnosis},#{infectionSource},#{hId},#{hdId},#{tStartTime},#{tEndTime},
+                                          #{active},#{create_date},#{last_date}, #{file1},#{file2}, #{file3}, #{file4})
+    </insert>
+
+<!--
+UPDATE yqfk_teacher set
+                                TSN=#{tSn},TNAME=#{tName},TTEXT=#{tText},TSEX=#{tSex},TCARD=#{tCard},TPHONE=#{tPhone},TLOCATION=#{tLocation},TADDRESS=#{tAddress},TOUCH=#{touch},
+                                DIAGNOSIS =#{diagnosis},INFECTION_SOURCE=#{infectionSource},HID=#{hId},HDID=#{hdId},TSTART_TIME=#{tStartTime},TEND_TIME=#{tEndTime},
+                                ACTIVE=#{active},CREATE_DATE=#{create_date},LAST_DATE=#{last_date}, File1=#{file1}, File2=#{file2}, File3=#{file3}, File4=#{file4}
+                                  WHERE TID=#{tId}
+-->
+
+    <update id="updateTeacher">
+        UPDATE yqfk_teacher set
+                                TSN=#{tSn},TNAME=#{tName},TTEXT=#{tText},TSEX=#{tSex},TCARD=#{tCard},TPHONE=#{tPhone},TLOCATION=#{tLocation},TADDRESS=#{tAddress},
+                                HDID=#{hdId},LAST_DATE=#{last_date}
+                                  WHERE TID=#{tId}
+    </update>
+
+    <update id="deleteTeacher">
+        UPDATE yqfk_teacher set  ACTIVE=#{active},LAST_DATE=#{last_date}  WHERE TID=#{tId}
+    </update>
+
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(*) number from yqfk_teacher where ACTIVE='1'
+    </select>
+
+</mapper>

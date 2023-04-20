@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CollegeMapper">
+
+
+    <resultMap id="BaseResultMap" type="com.example.demo.pojo.College">
+        <id column="CID" property="cid" jdbcType="INTEGER" />
+        <result column="CNAME" property="cname" jdbcType="VARCHAR" />
+        <result column="CTEXT" property="ctext" jdbcType="VARCHAR" />
+        <result column="ACTIVE" property="active" jdbcType="VARCHAR" />
+        <result column="CREATE_DATA" property="create_data" jdbcType="VARCHAR" />
+        <result column="LAST_DATA" property="last_data" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="selectCollege" resultType="com.example.demo.pojo.College">
+        select * from  yqfk_college
+    </select>
+
+    <select id="selectCollegePage" parameterType="java.lang.String" resultType="com.example.demo.pojo.College">
+        SELECT * from yqfk_college where ACTIVE = '1' AND CNAME like #{cnameLike}
+    </select>
+
+    <insert id="addCollege" >
+        insert into  yqfk_college  values(default,#{cname},#{ctext},#{active},#{create_data},#{last_data})
+    </insert>
+
+    <update id="updateCollege">
+        UPDATE yqfk_college set  CNAME=#{cname},CTEXT=#{ctext}, LAST_DATA=#{last_data}  WHERE CID=#{cid}
+    </update>
+
+    <update id="deleteCollege">
+        UPDATE yqfk_college set  ACTIVE=#{active},LAST_DATA=#{last_data}  WHERE CID=#{cid}
+    </update>
+
+</mapper>

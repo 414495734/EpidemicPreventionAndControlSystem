@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.WeiXinPupilMapper">
+    <insert id="insertPupil">
+        insert into  yqfk_pupil  values(default,#{pname},#{psex},#{pcard},#{plocation},#{active},#{touch},#{diagnosis},#{infectionSource},#{hid},#{pphone},#{pstart_time},#{tid})
+    </insert>
+    <update id="updetePupil">
+        UPDATE yqfk_pupil set  PNAME=#{pname},PSEX=#{psex},PLOCATION=#{plocation},ACTIVE=#{active},TOUCH=#{touch},DIAGNOSIS=#{diagnosis},INFECTION_SOURCE=#{infectionSource},PPHONE=#{pphone},PSTART_TIME=#{pstart_time},TID=#{tid}
+        where PCARD=#{pcard}
+    </update>
+
+    <select id="pCardSelect" resultType="com.example.demo.pojo.Pupil">
+          SELECT * from yqfk_pupil where ACTIVE='1' and  PCARD=#{pcard}
+    </select>
+</mapper>

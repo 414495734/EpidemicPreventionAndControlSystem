@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.AdminMapper">
+
+
+
+    <select id="selectAdmin" resultType="com.example.demo.pojo.Admin">
+        select  * from yqfk_admin where USERNAME=#{USERNAME}
+    </select>
+    <select id="selectPermission" resultType="com.example.demo.pojo.Permission">
+        select distinct  yqfk_permission.PID,yqfk_permission.PERMISSIONNAME,yqfk_permission.PERMISSIONDESC
+        from yqfk_admin left join yqfk_role
+                                  on yqfk_admin.RID=yqfk_role.RID
+                        left join yqfk_role_permission
+                                  on yqfk_role.RID=yqfk_role_permission.RID
+                        left join yqfk_permission
+                                  on yqfk_role_permission.PID=yqfk_permission.PID
+        WHERE USERNAME=#{username} and PASSWORD=#{password}
+    </select>
+    <select id="selectRole" resultType="com.example.demo.pojo.Role">
+        select * from  yqfk_role
+    </select>
+    <select id="selectPermissionAll" resultType="com.example.demo.pojo.Permission">
+        select * from yqfk_permission where ACTIVE=1
+    </select>
+    <select id="selectRidPermissionAll" resultType="com.example.demo.pojo.Permission">
+        SELECT * from yqfk_role join yqfk_role_permission
+                                     on yqfk_role.RID=yqfk_role_permission.RID
+                                join yqfk_permission
+                                     on yqfk_permission.PID=yqfk_role_permission.PID
+        WHERE yqfk_role.RID=#{RID} and ACTIVE=1
+    </select>
+
+
+    <update id="updetePermission">
+        UPDATE yqfk_permission set  PERMISSIONNAME=#{permissionName} ,PERMISSIONDESC=#{permissionDesc}  WHERE PID=#{pid}
+    </update>
+
+    <update id="deletePermission">
+           update yqfk_permission set ACTIVE=0 where  PID=#{PID}
+    </update>
+
+
+    <insert id="addPermission" useGeneratedKeys="true" keyProperty="pid" >
+        insert into  yqfk_permission  values(default,#{permissionName},#{permissionDesc},#{active})
+    </insert>
+    <insert id="addRolePermission">
+        insert  into yqfk_role_permission values(#{RID},#{PID})
+    </insert>
+</mapper>

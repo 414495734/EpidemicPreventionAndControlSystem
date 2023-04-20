@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.RoleMapper">
+    <insert id="addRole">
+        insert into yqfk_role values(default,#{ROLENAME})
+    </insert>
+    <insert id="insertRolePermission">
+        INSERT   into yqfk_role_permission  values(#{RID},#{PID})
+        ON DUPLICATE KEY UPDATE  RID=#{RID},PID=#{PID}
+    </insert>
+
+
+    <update id="updateRole">
+        UPDATE yqfk_role set ROLENAME=#{ROLENAME}  where RID=#{RID}
+    </update>
+    <delete id="deleteRole">
+        delete  from yqfk_role where RID=#{RID}
+    </delete>
+
+    <delete id="deleteRoleAndP">
+        delete  from yqfk_role_permission where RID=#{RID} and PID=#{PID}
+    </delete>
+    <select id="selectPidAndRid" resultType="java.lang.Integer">
+        select * from  yqfk_role_permission  where  RID=#{RID} AND  PID=#{PID}
+    </select>
+</mapper>

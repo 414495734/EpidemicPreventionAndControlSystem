@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.mapper.DoctorMapper" >
+  <resultMap id="BaseResultMap" type="com.example.demo.pojo.Doctor" >
+    <id column="DID" property="did" jdbcType="INTEGER" />
+    <result column="DNAME" property="dname" jdbcType="VARCHAR" />
+    <result column="DTEXT" property="dtext" jdbcType="VARCHAR" />
+    <result column="DSEX" property="dsex" jdbcType="VARCHAR" />
+    <result column="DCARD" property="dcard" jdbcType="VARCHAR" />
+    <result column="DPHONE" property="dphone" jdbcType="VARCHAR" />
+    <result column="DLOCATION" property="dlocation" jdbcType="VARCHAR" />
+    <result column="DADDRESS" property="daddress" jdbcType="VARCHAR" />
+    <result column="TOUCH" property="touch" jdbcType="VARCHAR" />
+    <result column="DIAGNOSIS" property="diagnosis" jdbcType="VARCHAR" />
+    <result column="INFECTION_SOURCE" property="infectionSource" jdbcType="VARCHAR" />
+    <result column="HID" property="hid" jdbcType="INTEGER" />
+    <result column="ACTIVE" property="active" jdbcType="VARCHAR" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="LAST_DATE" property="lastDate" jdbcType="TIMESTAMP" />
+    <result column="FILE1" property="file1" jdbcType="VARCHAR" />
+    <result column="FILE2" property="file2" jdbcType="VARCHAR" />
+    <result column="FILE3" property="file3" jdbcType="VARCHAR" />
+    <result column="FILE4" property="file4" jdbcType="VARCHAR" />
+    <association property="hospital" javaType="com.example.demo.pojo.Hospital">
+      <id column="HID" property="hid" jdbcType="INTEGER" />
+      <result column="HNAME" property="hname" jdbcType="VARCHAR" />
+      <result column="HTEXT" property="htext" jdbcType="VARCHAR" />
+      <result column="HLOCATION" property="hlocation" jdbcType="VARCHAR" />
+      <result column="HDETAILED_LOCATION" property="hdetailedLocation" jdbcType="VARCHAR" />
+      <result column="HPHONE" property="hphone" jdbcType="VARCHAR" />
+      <result column="ACTIVE" property="active" jdbcType="VARCHAR" />
+      <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+      <result column="LAST_DATE" property="lastDate" jdbcType="TIMESTAMP" />
+      <result column="FILE1" property="file1" jdbcType="VARCHAR" />
+      <result column="FILE2" property="file2" jdbcType="VARCHAR" />
+      <result column="FILE3" property="file3" jdbcType="VARCHAR" />
+      <result column="FILE4" property="file4" jdbcType="VARCHAR" />
+    </association>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DID, DNAME, DTEXT, DSEX, DCARD, DPHONE, DLOCATION, DADDRESS, TOUCH, DIAGNOSIS, INFECTION_SOURCE, 
+    HID, ACTIVE, CREATE_DATE, LAST_DATE, FILE1, FILE2, FILE3, FILE4
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.example.demo.pojo.DoctorExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from yqfk_doctor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yqfk_doctor
+    where DID = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yqfk_doctor
+    where DID = #{did,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.demo.pojo.DoctorExample" >
+    delete from yqfk_doctor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.pojo.Doctor" >
+    insert into yqfk_doctor (DID, DNAME, DTEXT, 
+      DSEX, DCARD, DPHONE, 
+      DLOCATION, DADDRESS, TOUCH, 
+      DIAGNOSIS, INFECTION_SOURCE, HID, 
+      ACTIVE, CREATE_DATE, LAST_DATE, 
+      FILE1, FILE2, FILE3, 
+      FILE4)
+    values (#{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR}, #{dtext,jdbcType=VARCHAR}, 
+      #{dsex,jdbcType=VARCHAR}, #{dcard,jdbcType=VARCHAR}, #{dphone,jdbcType=VARCHAR}, 
+      #{dlocation,jdbcType=VARCHAR}, #{daddress,jdbcType=VARCHAR}, #{touch,jdbcType=VARCHAR}, 
+      #{diagnosis,jdbcType=VARCHAR}, #{infectionSource,jdbcType=VARCHAR}, #{hid,jdbcType=INTEGER}, 
+      #{active,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{lastDate,jdbcType=TIMESTAMP}, 
+      #{file1,jdbcType=VARCHAR}, #{file2,jdbcType=VARCHAR}, #{file3,jdbcType=VARCHAR}, 
+      #{file4,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.pojo.Doctor" >
+    insert into yqfk_doctor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        DID,
+      </if>
+      <if test="dname != null" >
+        DNAME,
+      </if>
+      <if test="dtext != null" >
+        DTEXT,
+      </if>
+      <if test="dsex != null" >
+        DSEX,
+      </if>
+      <if test="dcard != null" >
+        DCARD,
+      </if>
+      <if test="dphone != null" >
+        DPHONE,
+      </if>
+      <if test="dlocation != null" >
+        DLOCATION,
+      </if>
+      <if test="daddress != null" >
+        DADDRESS,
+      </if>
+      <if test="touch != null" >
+        TOUCH,
+      </if>
+      <if test="diagnosis != null" >
+        DIAGNOSIS,
+      </if>
+      <if test="infectionSource != null" >
+        INFECTION_SOURCE,
+      </if>
+      <if test="hid != null" >
+        HID,
+      </if>
+      <if test="active != null" >
+        ACTIVE,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="lastDate != null" >
+        LAST_DATE,
+      </if>
+      <if test="file1 != null" >
+        FILE1,
+      </if>
+      <if test="file2 != null" >
+        FILE2,
+      </if>
+      <if test="file3 != null" >
+        FILE3,
+      </if>
+      <if test="file4 != null" >
+        FILE4,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="dname != null" >
+        #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="dtext != null" >
+        #{dtext,jdbcType=VARCHAR},
+      </if>
+      <if test="dsex != null" >
+        #{dsex,jdbcType=VARCHAR},
+      </if>
+      <if test="dcard != null" >
+        #{dcard,jdbcType=VARCHAR},
+      </if>
+      <if test="dphone != null" >
+        #{dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="dlocation != null" >
+        #{dlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="daddress != null" >
+        #{daddress,jdbcType=VARCHAR},
+      </if>
+      <if test="touch != null" >
+        #{touch,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosis != null" >
+        #{diagnosis,jdbcType=VARCHAR},
+      </if>
+      <if test="infectionSource != null" >
+        #{infectionSource,jdbcType=VARCHAR},
+      </if>
+      <if test="hid != null" >
+        #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastDate != null" >
+        #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="file1 != null" >
+        #{file1,jdbcType=VARCHAR},
+      </if>
+      <if test="file2 != null" >
+        #{file2,jdbcType=VARCHAR},
+      </if>
+      <if test="file3 != null" >
+        #{file3,jdbcType=VARCHAR},
+      </if>
+      <if test="file4 != null" >
+        #{file4,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.demo.pojo.DoctorExample" resultType="java.lang.Integer" >
+    select count(*) from yqfk_doctor
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update yqfk_doctor
+    <set >
+      <if test="record.did != null" >
+        DID = #{record.did,jdbcType=INTEGER},
+      </if>
+      <if test="record.dname != null" >
+        DNAME = #{record.dname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dtext != null" >
+        DTEXT = #{record.dtext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dsex != null" >
+        DSEX = #{record.dsex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dcard != null" >
+        DCARD = #{record.dcard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dphone != null" >
+        DPHONE = #{record.dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dlocation != null" >
+        DLOCATION = #{record.dlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.daddress != null" >
+        DADDRESS = #{record.daddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.touch != null" >
+        TOUCH = #{record.touch,jdbcType=VARCHAR},
+      </if>
+      <if test="record.diagnosis != null" >
+        DIAGNOSIS = #{record.diagnosis,jdbcType=VARCHAR},
+      </if>
+      <if test="record.infectionSource != null" >
+        INFECTION_SOURCE = #{record.infectionSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hid != null" >
+        HID = #{record.hid,jdbcType=INTEGER},
+      </if>
+      <if test="record.active != null" >
+        ACTIVE = #{record.active,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createDate != null" >
+        CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastDate != null" >
+        LAST_DATE = #{record.lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.file1 != null" >
+        FILE1 = #{record.file1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file2 != null" >
+        FILE2 = #{record.file2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file3 != null" >
+        FILE3 = #{record.file3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.file4 != null" >
+        FILE4 = #{record.file4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update yqfk_doctor
+    set DID = #{record.did,jdbcType=INTEGER},
+      DNAME = #{record.dname,jdbcType=VARCHAR},
+      DTEXT = #{record.dtext,jdbcType=VARCHAR},
+      DSEX = #{record.dsex,jdbcType=VARCHAR},
+      DCARD = #{record.dcard,jdbcType=VARCHAR},
+      DPHONE = #{record.dphone,jdbcType=VARCHAR},
+      DLOCATION = #{record.dlocation,jdbcType=VARCHAR},
+      DADDRESS = #{record.daddress,jdbcType=VARCHAR},
+      TOUCH = #{record.touch,jdbcType=VARCHAR},
+      DIAGNOSIS = #{record.diagnosis,jdbcType=VARCHAR},
+      INFECTION_SOURCE = #{record.infectionSource,jdbcType=VARCHAR},
+      HID = #{record.hid,jdbcType=INTEGER},
+      ACTIVE = #{record.active,jdbcType=VARCHAR},
+      CREATE_DATE = #{record.createDate,jdbcType=TIMESTAMP},
+      LAST_DATE = #{record.lastDate,jdbcType=TIMESTAMP},
+      FILE1 = #{record.file1,jdbcType=VARCHAR},
+      FILE2 = #{record.file2,jdbcType=VARCHAR},
+      FILE3 = #{record.file3,jdbcType=VARCHAR},
+      FILE4 = #{record.file4,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.pojo.Doctor" >
+    update yqfk_doctor
+    <set >
+      <if test="dname != null" >
+        DNAME = #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="dtext != null" >
+        DTEXT = #{dtext,jdbcType=VARCHAR},
+      </if>
+      <if test="dsex != null" >
+        DSEX = #{dsex,jdbcType=VARCHAR},
+      </if>
+      <if test="dcard != null" >
+        DCARD = #{dcard,jdbcType=VARCHAR},
+      </if>
+      <if test="dphone != null" >
+        DPHONE = #{dphone,jdbcType=VARCHAR},
+      </if>
+      <if test="dlocation != null" >
+        DLOCATION = #{dlocation,jdbcType=VARCHAR},
+      </if>
+      <if test="daddress != null" >
+        DADDRESS = #{daddress,jdbcType=VARCHAR},
+      </if>
+      <if test="touch != null" >
+        TOUCH = #{touch,jdbcType=VARCHAR},
+      </if>
+      <if test="diagnosis != null" >
+        DIAGNOSIS = #{diagnosis,jdbcType=VARCHAR},
+      </if>
+      <if test="infectionSource != null" >
+        INFECTION_SOURCE = #{infectionSource,jdbcType=VARCHAR},
+      </if>
+      <if test="hid != null" >
+        HID = #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="active != null" >
+        ACTIVE = #{active,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastDate != null" >
+        LAST_DATE = #{lastDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="file1 != null" >
+        FILE1 = #{file1,jdbcType=VARCHAR},
+      </if>
+      <if test="file2 != null" >
+        FILE2 = #{file2,jdbcType=VARCHAR},
+      </if>
+      <if test="file3 != null" >
+        FILE3 = #{file3,jdbcType=VARCHAR},
+      </if>
+      <if test="file4 != null" >
+        FILE4 = #{file4,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DID = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.pojo.Doctor" >
+    update yqfk_doctor
+    set DNAME = #{dname,jdbcType=VARCHAR},
+      DTEXT = #{dtext,jdbcType=VARCHAR},
+      DSEX = #{dsex,jdbcType=VARCHAR},
+      DCARD = #{dcard,jdbcType=VARCHAR},
+      DPHONE = #{dphone,jdbcType=VARCHAR},
+      DLOCATION = #{dlocation,jdbcType=VARCHAR},
+      DADDRESS = #{daddress,jdbcType=VARCHAR},
+      TOUCH = #{touch,jdbcType=VARCHAR},
+      DIAGNOSIS = #{diagnosis,jdbcType=VARCHAR},
+      INFECTION_SOURCE = #{infectionSource,jdbcType=VARCHAR},
+      HID = #{hid,jdbcType=INTEGER},
+      ACTIVE = #{active,jdbcType=VARCHAR},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      LAST_DATE = #{lastDate,jdbcType=TIMESTAMP},
+      FILE1 = #{file1,jdbcType=VARCHAR},
+      FILE2 = #{file2,jdbcType=VARCHAR},
+      FILE3 = #{file3,jdbcType=VARCHAR},
+      FILE4 = #{file4,jdbcType=VARCHAR}
+    where DID = #{did,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectDoctor" resultType="com.example.demo.pojo.Doctor">
+    select * from  yqfk_doctor where ACTIVE = '1'
+  </select>
+
+  <select id="selectDoctorPage"  parameterType="com.example.demo.pojo.Doctor" resultMap="BaseResultMap">
+    SELECT * from yqfk_doctor d  LEFT JOIN yqfk_hospital h on d.HID = h.HID
+    where d.ACTIVE = '1' AND d.DNAME like #{dname}
+    <if test="dcard!=null and dcard!='' ">
+      AND d.DCARD = #{dcard}
+    </if>
+    <if test="hid!=null and hid!='' ">
+      AND d.HID = #{hid}
+    </if>
+  </select>
+    <select id="wxDoctorPhoneSelect" resultType="com.example.demo.pojo.Doctor">
+      select * from yqfk_doctor where DPHONE=#{DPHONE}
+    </select>
+
+</mapper>
